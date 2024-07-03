@@ -1,0 +1,17 @@
+{
+    "rules": {
+      ".read": "auth != null",   
+      ".write": "auth != null",  
+      "rooms": {
+        "$roomId": {
+          ".read": true,         
+          ".write": "auth != null && data.child('owner').val() == auth.uid",  
+          "messages": {
+            ".read": true,       
+            ".write": "auth != null"  
+          }
+        }
+      }
+    }
+  }
+  
